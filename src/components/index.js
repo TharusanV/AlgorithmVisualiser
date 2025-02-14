@@ -5,6 +5,10 @@ import Stack from "./Stack.jsx";
 import Queue from "./Queue.jsx";
 import DataStructures from "./DataStructures.jsx";
 import Algorithms from "./Algorithms.jsx";
+import Tree from "./Tree.jsx";
+import Graph from "./Graph.jsx";
+import HashTable from "./HashTable.jsx";
+import Heap from "./Heap.jsx";
 
 export{
   Home,
@@ -14,4 +18,9 @@ export{
   Queue,
   DataStructures,
   Algorithms,
+  Tree,
+  Graph,
+  HashTable,
+  Heap,
+  
 }
