@@ -2,7 +2,11 @@ import React from 'react'
 
 const Arrays = () => {
   return (
-    <div>Arrays</div>
+    <section className='arrays'>
+      <p>
+        
+      </p>
+    </section>
   )
 }
 

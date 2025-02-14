@@ -1,16 +1,18 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 
-import { Home } from "./components";
+import { Algorithms, DataStructures, Home } from "./components";
+import Navbar from "./components/Navbar";
 
 function App() {
 
   return (
     <HashRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dataStructures" element={<DataStructures />} />
+        <Route path="/algorithms" element={<Algorithms />} />
+      </Routes>
     </HashRouter>
   )
 }
