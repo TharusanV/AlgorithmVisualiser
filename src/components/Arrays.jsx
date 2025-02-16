@@ -22,7 +22,7 @@ const Arrays = () => {
         </div>
 
         <div>
-          <h2>Time complexity:</h2>
+          <h2>Time complexity (Worst Case):</h2>
           <p>Access - O(1) -  Direct Indexing e.g. a[3]<br/>
             Search - O(n) -	Linear Search (Goes through the entire list until reached) <br/>
             Insert - O(n)	-	Requires shifting elements <br/>
