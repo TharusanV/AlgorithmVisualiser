@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Arrays = () => {
   return (
       <>
-        <div>
+        <div style={{marginTop: "30px"}}>
           <h1>Arrays</h1>
           <p>An Array is a collection of elements of the same data type, where a unique index identifies each element.
             Imagine a row of boxes where each box holds a value (like numbers, words, etc.).
