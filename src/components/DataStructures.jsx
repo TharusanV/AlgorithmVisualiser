@@ -59,6 +59,8 @@ const DataStructures = () => {
         <div className="content-container"> 
           <Arrays/>
           <LinkedLists/>
+          <Stack/>
+          
         </div>
       </div>
 
