@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../stylesheets/dataStructuresStyles.css';
 import { motion } from "framer-motion";
-import { Arrays, LinkedLists, Stack, Queue} from "../components";
+import { Arrays, LinkedLists, Stack, Queue, Tree, Graph, HashTable, Set} from "../components";
 
 
 const DataStructures = () => {
@@ -60,7 +60,15 @@ const DataStructures = () => {
           <Arrays/>
           <LinkedLists/>
           <Stack/>
-          
+          <Queue/>
+        </div>
+
+        <div className="content-container"> 
+          <Graph/>
+          <Tree/>
+          <Heap/>
+          <HashTable/>
+
         </div>
       </div>
 
