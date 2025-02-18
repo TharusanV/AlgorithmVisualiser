@@ -68,6 +68,7 @@ const DataStructures = () => {
           <Tree/>
           <Heap/>
           <HashTable/>
+          <Set/>
 
         </div>
       </div>
