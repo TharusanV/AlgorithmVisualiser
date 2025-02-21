@@ -1,6 +1,6 @@
+/*
 .data {
   width: 100%;
-  height: 100vh;
   margin: 0;
   padding: 20px;
   color: white;
@@ -76,6 +76,43 @@
 .item img {
   width: 100%;
   border-radius: 8px;
+}
+
+
+*/
+
+
+.container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  scroll-snap-align: start;
+}
+
+.section-1 {
+  background-color: #ff6b6b;
+}
+
+.section-2 {
+  background-color: #1dd1a1;
+}
+
+.section-3 {
+  background-color: #54a0ff;
+}
+
+.section-4 {
+  background-color: #feca57;
 }
 
 

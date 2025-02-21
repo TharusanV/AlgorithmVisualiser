@@ -11,6 +11,8 @@ import HashTable from "./HashTable.jsx";
 import Heap from "./Heap.jsx";
 import Set from "./Set.jsx"
 
+import BinarySearch from "./BinarySearch.jsx";
+
 export{
   Home,
   Arrays,
@@ -24,5 +26,7 @@ export{
   HashTable,
   Heap,
   Set,
+  
+  BinarySearch,
   
 }

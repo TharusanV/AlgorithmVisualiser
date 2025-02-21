@@ -99,8 +99,8 @@ const BinarySearch = () => {
   };
   
   return (
-    <div style={{width: "100%", height: "100vh", margin: 0, padding: "20px", overflowY: "scroll", backgroundColor: "#lalala"}}>
-      <div style={{paddingTop: "80px", width: "90%", maxWidth: "1200px", margin: "0 auto"}}>
+    <>
+      <div style={{paddingTop: "80px"}}>
         <h1 className='title' style={{fontSize: "36px"}}>Binary Search</h1>
 
         <p style={{marginBottom: "10px"}}>
@@ -172,7 +172,7 @@ const BinarySearch = () => {
         </div>
 
       </div>
-    </div>
+    </>
   )
 }
 
