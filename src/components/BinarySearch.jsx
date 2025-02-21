@@ -8,18 +8,22 @@ const BinarySearch = () => {
   const [low, setLow] = useState(0);
   const [high, setHigh] = useState(binarySearchArray.length - 1);
 
+  const [stepNum, setStepNum] = useState(0);
+
   const [consoleLog, setConsoleLog] = useState([]);
 
 
   const binarySingleStepSearch = () => {
-    if(target === null || found === true){
-      return;
-    }
+    if(target === null || found === true){return;}
 
     if(consoleLog.length == 0){
       setConsoleLog((prevConsole) => [...prevConsole, <>
         <span>Using binary search to find {target}</span><br/>
       </>]);
+
+      setStepNum(1);
+
+      return;
     }
 
     //When the target is NOT in the sorted array after the binary search algorithm is used then this condition will occur
@@ -33,39 +37,60 @@ const BinarySearch = () => {
 
       return;
     }
-    
-    //Finding middle of the current array based on the lowest index and highest index it could be
-    const middle = Math.floor((low + high) / 2);
-    setMid(middle);
-    setConsoleLog((prevConsole) => [...prevConsole, <>
-      <span>Searching at the midpoint: {binarySearchArray[middle]}</span><br/>
-    </>]);
-    
-    if (binarySearchArray[middle] === target) {
-      setFound(true);
-      
+
+    if(stepNum === 1){
+      //Finding middle of the current array based on the lowest index and highest index it could be
+      const middle = Math.floor((low + high) / 2);
+      setMid(middle);
       setConsoleLog((prevConsole) => [...prevConsole, <>
-        <span>{target} found </span><br/>
+        <span>Searching at the midpoint: {binarySearchArray[middle]}</span><br/>
       </>]);
+
+      setStepNum(2);
 
       return;
-    } 
-    else if (binarySearchArray[middle] < target) {
-      setLow(middle + 1);
-
-      setConsoleLog((prevConsole) => [...prevConsole, <>
-        <span>Going right with {binarySearchArray[middle]} being less than target</span><br/>
-      </>]);
-    } 
-    else {
-      setHigh(middle - 1);
-      setConsoleLog((prevConsole) => [...prevConsole, <>
-        <span>Going left with {binarySearchArray[middle]} being greater than target</span><br/>
-      </>]);
     }
+
+    else if(stepNum === 2){
+        //Check if target is the same as the middle value possible. If its not then run the else if statements
+        if (binarySearchArray[mid] === target) {
+          setFound(true);
+          
+          setConsoleLog((prevConsole) => [...prevConsole, <>
+            <span>{target} found </span><br/>
+          </>]);
+
+          return;
+        } 
+        else if (binarySearchArray[mid] < target) {
+          setLow(mid + 1);
+          setMid(null);
+
+          setConsoleLog((prevConsole) => [...prevConsole, <>
+            <span>Going right with {binarySearchArray[mid]} being less than target</span><br/>
+          </>]);
+        } 
+        else {
+          setHigh(mid - 1);
+          setMid(null);
+          
+          setConsoleLog((prevConsole) => [...prevConsole, <>
+            <span>Going left with {binarySearchArray[mid]} being greater than target</span><br/>
+          </>]);
+        }
+
+        setStepNum(1);
+
+        return;
+    }
+
+    
+    
+
   };
   
   const resetSearch = () => {
+    setStepNum(0);
     setLow(0);
     setHigh(binarySearchArray.length - 1);
     setMid(null);
@@ -122,10 +147,14 @@ const BinarySearch = () => {
                   minWidth: '40px',
                   padding: '10px', 
                   textAlign: 'center', 
-                  border: '2px solid red',
-                  color: "black",
+                  border: '2px solid grey',
+                  color: "white",
                   fontWeight: "bold",
-                  backgroundColor: found && index === mid ? 'green' : index === mid ? 'lightblue' :  'white'
+                  backgroundColor: 
+                    found && index === mid ? 'green' : 
+                    index === mid ? 'red' : 
+                    stepNum != 0 && index >= low && index <= high ? '#0099ff' :
+                    'black'
                 }} 
               >
                 {num}
@@ -136,9 +165,9 @@ const BinarySearch = () => {
 
         <div className='console-container' style={{display: 'flex', width: '100%', justifyContent: 'center', marginTop: "15px"}}>
           <div style={{width: "450px", height: "400px", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
-            <p>
-              {consoleLog}
-            </p>
+          {consoleLog.map((log, index) => (
+            <p key={index}>{log}</p>
+          ))}
           </div>
         </div>
 
