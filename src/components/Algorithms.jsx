@@ -1,5 +1,5 @@
 import '../stylesheets/dataStructuresStyles.css';
-import {BinarySearch} from '../components'
+import {BinarySearch, BubbleSort, InsertionSort, LinearSearch, MergeSort, QuickSort, SelectionSort} from '../components'
 
 const Algorithms = () => {
 
@@ -14,9 +14,15 @@ const Algorithms = () => {
 
   const searchingNavLinks = [
     { id: "linear", title: "Linear",},
-    { id: "bubble", title: "Bubble" },
+    { id: "binary", title: "Binary" },
   ];
 
+  const handleScrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="container">
@@ -30,9 +36,9 @@ const Algorithms = () => {
             <h2>Searching Algorithm</h2>
             <div className="all-items-carousel">
               {searchingNavLinks.map((item) => (
-              <div to={item.id} className="item" key={item.id}>
+              <div key={item.id} className="item" onClick={() => handleScrollToSection(item.id)}>
                 <h3>{item.title}</h3>
-              </div>
+            </div>
               ))}
             </div>
           </div>
@@ -41,7 +47,7 @@ const Algorithms = () => {
             <h2>Sorting Algorithms</h2>
             <div className="all-items-carousel">
               {sortNavLinks.map((item) => (
-              <div to={item.id} className="item" key={item.id}>
+              <div key={item.id} className="item" onClick={() => handleScrollToSection(item.id)}>
                 <h3>{item.title}</h3>
               </div>
               ))}
@@ -50,19 +56,50 @@ const Algorithms = () => {
         </div>
       </section>
       
-      <section className="section section-2">
+      <section id="linear" className="section  section-2">
+        <div className="data-container">
+          <LinearSearch/>
+        </div>
+      </section>
+
+      <section id="binary" className="section section-3">
         <div className="data-container">
           <BinarySearch/>
         </div>
       </section>
 
-      <section className="section section-3">
-
+      <section id="bubble" className="section section-4">
+        <div className="data-container">
+          <BubbleSort/>
+        </div>
       </section>
 
-      <section className="section section-4">
-
+      <section id="selection" className="section section-5">
+        <div className="data-container">
+          <SelectionSort/>
+        </div>
       </section>
+
+      <section id="insertion" className="section section-6">
+        <div className="data-container">
+          <InsertionSort/>
+        </div>
+      </section>
+
+      <section id="merge" className="section section-7">
+        <div className="data-container">
+          <MergeSort/>
+        </div>
+      </section>
+
+      <section id="quick" className="section section-8">
+        <div className="data-container">
+          <QuickSort/>
+        </div>
+      </section>
+
+
+
     </div>
 
   )
