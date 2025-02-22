@@ -98,6 +98,9 @@ const BinarySearch = () => {
     setFound(false);
     setConsoleLog([]);
   };
+
+
+  const [showVisual, setShowVisual] = useState(true);
   
   return (
     <>
@@ -114,43 +117,99 @@ const BinarySearch = () => {
           - Worst: O(log(n)) <br/>
         </p>
 
-        <div className='bar' >
-          <div className='target-container'>
-            <label>Target: </label>
-            <input 
-              type="number" 
-              value={target} 
-              onChange={(e) => {
-                setTarget(Number(e.target.value));
-                resetSearch();
-              }}
-            />
-          </div>
-          <button style={{marginLeft: "5px", marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={binarySingleStepSearch}>Play</button>
-          <button style={{marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={resetSearch}>Reset</button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            gap: "10px",
+            marginTop: "5px",
+            marginBottom: "5px",
+          }}
+        >
+          <button 
+            style={{padding: "10px",width: "30%",height: "50px",backgroundColor: singlyLinkedList ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
+            onClick={() => {setShowVisual(true);}}
+          >
+            Visual
+          </button>
+
+          <button 
+            style={{padding: "10px",width: "30%",height: "50px",backgroundColor: singlyLinkedList ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
+            onClick={() => {setShowVisual(false);}}
+          >
+            Code
+          </button>
         </div>
 
-        <div className='block-container'>
-          {binarySearchArray.map((num, index) => (
-            <div key={index} >
-              <div className="mapped-container" style={{color: "grey"}}>
-                {index}
-              </div>
-              <div className="mapped-container" style={{border: '2px solid grey',color: "white",backgroundColor: found && index === mid ? 'green' : index === mid ? 'red' : stepNum != 0 && index >= low && index <= high ? '#0099ff' :'black' }} >
-                {num}
-              </div>
+        {showVisual &&
+        <div className="visual-container">
+          <div className='bar' >
+            <div className='target-container'>
+              <label>Target: </label>
+              <input 
+                type="number" 
+                value={target} 
+                onChange={(e) => {
+                  setTarget(Number(e.target.value));
+                  resetSearch();
+                }}
+              />
             </div>
-          ))}
-        </div>
+            <button style={{marginLeft: "5px", marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={binarySingleStepSearch}>Play</button>
+            <button style={{marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={resetSearch}>Reset</button>
+          </div>
 
-        <div className='console-container'>
-          <div style={{width: "450px", height: "35vh", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
-            {consoleLog.map((log, index) => (
-              <p key={index}>{log}</p>
+          <div className='block-container'>
+            {binarySearchArray.map((num, index) => (
+              <div key={index} >
+                <div className="mapped-container" style={{color: "grey"}}>
+                  {index}
+                </div>
+                <div className="mapped-container" style={{border: '2px solid grey',color: "white",backgroundColor: found && index === mid ? 'green' : index === mid ? 'red' : stepNum != 0 && index >= low && index <= high ? '#0099ff' :'black' }} >
+                  {num}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
 
+          <div className='console-container'>
+            <div style={{width: "450px", height: "35vh", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
+              {consoleLog.map((log, index) => (
+                <p key={index}>{log}</p>
+              ))}
+            </div>
+          </div>
+        </div>}
+
+        {!showVisual &&
+        <div className="code-container">
+          <div>
+            <p>
+              public static int binarySearch(int sortedArray[], int target)
+                int startIndex = 0;
+                int endIndex = sortedArray.length - 1;
+
+                while(startIndex less than or equal to endIndex)
+                  int midIndex = (startIndex + endIndex) / 2;
+
+                  if(sortedArray[midIndex] == target)
+                    return midIndex;
+                  else if(target greater than sortedArray[midIndex])
+                    startIndex = midIndex + 1;
+                  else
+                    endIndex = midIndex - 1;
+
+
+                return -1
+            </p>
+          </div>
+        </div>}
+
+
+        
       </div>
     </>
   )
