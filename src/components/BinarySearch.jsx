@@ -100,10 +100,10 @@ const BinarySearch = () => {
   
   return (
     <>
-      <div style={{paddingTop: "80px"}}>
-        <h1 className='title' style={{fontSize: "36px"}}>Binary Search</h1>
+      <div>
+        <h1 className='title' style={{fontSize: "1.5rem", color: "red"}}>Binary Search</h1>
 
-        <p style={{marginBottom: "10px"}}>
+        <p style={{marginBottom: "10px", fontSize: "16px"}}>
           A highly efficient search algorithm that works on sorted lists by repeatedly dividing the search interval in half. 
           If the target element is less than the midpoint, search in the left half; otherwise, search in the right half. <br/>
           <br/>
@@ -133,7 +133,7 @@ const BinarySearch = () => {
             <div key={index} >
               <div style={{
                   flex: '0 0 auto',
-                  minWidth: '40px',
+                  minWidth: '10px',
                   padding: '10px', 
                   textAlign: 'center', 
                   color: "grey",
@@ -164,7 +164,7 @@ const BinarySearch = () => {
         </div>
 
         <div className='console-container' style={{display: 'flex', width: '100%', justifyContent: 'center', marginTop: "15px"}}>
-          <div style={{width: "450px", height: "400px", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
+          <div style={{width: "450px", height: "35vh", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
           {consoleLog.map((log, index) => (
             <p key={index}>{log}</p>
           ))}
