@@ -3,7 +3,7 @@ import React from 'react'
 const Heap = () => {
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div >
         <h1>Heap</h1>
         <p>Basically an ordered binary tree. There are two types: Max-Heap: Parent nodes are greater than or equal to their children. Min-Heap: Parent nodes are equal or less than their children.
         </p>

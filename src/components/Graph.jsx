@@ -3,7 +3,7 @@ import React from 'react'
 const Graph = () => {
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div >
         <h1>Graphs</h1>
         <p>A collection of nodes (vertices) connected by lines (edges). Graphs can be directed or undirected, and may contain cycles.
         </p>

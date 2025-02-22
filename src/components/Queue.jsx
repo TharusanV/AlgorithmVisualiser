@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Queue = () => {
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div >
         <h1>Queues</h1>
         <p>Follows the First-In, First-Out (FIFO) principle where like a line of people, the first one in line is the first to leave.
         </p>
@@ -41,7 +41,7 @@ const Queue = () => {
         <h2>Disadvantages:</h2>
         <p>1) Limited access with only the front and rear elements are accessible  <br/>
           2) Memory usage is high especially in cases of long Queues.  <br/>
-          3) In some applications, if the Queue becomes full, it can block further enqueuing until space becomes available which can be problematic where continuous data flow is critical.   
+          3) If the Queue becomes full, it can block further enqueuing until space becomes available which can be problematic where continuous data flow is critical.   
         </p>
       </div>
     </>

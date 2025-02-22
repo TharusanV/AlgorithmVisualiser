@@ -1,0 +1,38 @@
+.title{
+  font-size: 1.5rem;
+  color: black;
+}
+
+.summary{
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.bar{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.block-container{
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  justify-content: center;
+}
+
+.mapped-container{
+  flex: 0 0 auto;
+  min-width: 10px;
+  padding: 10px;
+  text-align: center;
+  font-weight: "bold",
+}
+
+.console-container{
+  display: flex; 
+  width: 100%; 
+  justify-content: center;
+  margin-top: 15px;
+}

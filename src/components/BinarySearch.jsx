@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import "../stylesheets/allAlgorithmsStyles.css"
+import { useState } from "react";
 
 const BinarySearch = () => {
   const [binarySearchArray] = useState([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
@@ -101,9 +102,9 @@ const BinarySearch = () => {
   return (
     <>
       <div>
-        <h1 className='title' style={{fontSize: "1.5rem", color: "red"}}>Binary Search</h1>
+        <h1 className='title'>Binary Search</h1>
 
-        <p style={{marginBottom: "10px", fontSize: "16px"}}>
+        <p className="summary">
           A highly efficient search algorithm that works on sorted lists by repeatedly dividing the search interval in half. 
           If the target element is less than the midpoint, search in the left half; otherwise, search in the right half. <br/>
           <br/>
@@ -111,63 +112,42 @@ const BinarySearch = () => {
           - Best: O(1) - if the target is the middle element.<br/>
           - Average: O(log(n))<br/>
           - Worst: O(log(n)) <br/>
-          A binary search is significantly faster than a linear search of O(n).
-
         </p>
 
-        <div className='bar' style={{display: 'flex', justifyContent: "center", flexDirection: "row", marginBottom: '10px'}}>
+        <div className='bar' >
           <div className='target-container'>
             <label>Target: </label>
             <input 
               type="number" 
               value={target} 
-              onChange={(e) => setTarget(Number(e.target.value))} 
+              onChange={(e) => {
+                setTarget(Number(e.target.value));
+                resetSearch();
+              }}
             />
           </div>
           <button style={{marginLeft: "5px", marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={binarySingleStepSearch}>Play</button>
           <button style={{marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={resetSearch}>Reset</button>
         </div>
 
-        <div className='block-container' style={{display: 'flex', width: '100%', gap:'5px', justifyContent: 'center'}}>
+        <div className='block-container'>
           {binarySearchArray.map((num, index) => (
             <div key={index} >
-              <div style={{
-                  flex: '0 0 auto',
-                  minWidth: '10px',
-                  padding: '10px', 
-                  textAlign: 'center', 
-                  color: "grey",
-                  fontWeight: "bold",
-                }}
-              >
+              <div className="mapped-container" style={{color: "grey"}}>
                 {index}
               </div>
-              <div style={{
-                  flex: '0 0 auto',
-                  minWidth: '40px',
-                  padding: '10px', 
-                  textAlign: 'center', 
-                  border: '2px solid grey',
-                  color: "white",
-                  fontWeight: "bold",
-                  backgroundColor: 
-                    found && index === mid ? 'green' : 
-                    index === mid ? 'red' : 
-                    stepNum != 0 && index >= low && index <= high ? '#0099ff' :
-                    'black'
-                }} 
-              >
+              <div className="mapped-container" style={{border: '2px solid grey',color: "white",backgroundColor: found && index === mid ? 'green' : index === mid ? 'red' : stepNum != 0 && index >= low && index <= high ? '#0099ff' :'black' }} >
                 {num}
               </div>
             </div>
           ))}
         </div>
 
-        <div className='console-container' style={{display: 'flex', width: '100%', justifyContent: 'center', marginTop: "15px"}}>
+        <div className='console-container'>
           <div style={{width: "450px", height: "35vh", backgroundColor: 'lightGrey', border: '5px solid gray',color: 'white', fontWeight: "bold", padding: "2px", overflowY: "scroll"}}> 
-          {consoleLog.map((log, index) => (
-            <p key={index}>{log}</p>
-          ))}
+            {consoleLog.map((log, index) => (
+              <p key={index}>{log}</p>
+            ))}
           </div>
         </div>
 

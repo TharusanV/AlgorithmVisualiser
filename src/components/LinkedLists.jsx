@@ -11,7 +11,7 @@ const LinkedLists = () => {
 
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div>
         <h1>Linked Lists</h1>
         <p>Linked Lists use a chain-like structure where elements (nodes) are linked using pointers. 
           Unlike arrays, linked lists don't require contiguous memory allocation. meaning no direct accessing 

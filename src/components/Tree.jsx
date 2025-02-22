@@ -3,7 +3,7 @@ import React from 'react'
 const Tree = () => {
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div >
         <h1>Trees</h1>
         <p>A hierarchical Data Structure formed up of nodes connected by edges. Each tree has a root node, and each node can have zero or more child nodes. 
         </p>

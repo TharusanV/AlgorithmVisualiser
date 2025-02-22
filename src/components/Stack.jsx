@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Stack = () => {
   return (
     <>
-      <div style={{marginTop: "30px"}}>
+      <div>
         <h1>Stacks</h1>
         <p>Follows the Last-In, First-Out (LIFO) principle where new elements are added to the top and items are removed from the top.
           Think of a stack of plates.
