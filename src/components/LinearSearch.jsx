@@ -21,7 +21,7 @@ const LinearSearch = () => {
   const [found, setFound] = useState(false);
   const [target, setTarget] = useState(4);
 
-  const [index, setIndex] = useState(0);
+  const [indexCurrent, setIndexCurrent] = useState(0);
 
   const [stepNum, setStepNum] = useState(0);
 
@@ -40,7 +40,7 @@ const LinearSearch = () => {
       return;
     }
 
-    if(index > linearSearchArray.length){
+    if(indexCurrent > linearSearchArray.length){
       setFound(false);
 
       setConsoleLog((prevConsole) => [...prevConsole, <>
@@ -51,7 +51,7 @@ const LinearSearch = () => {
     }
 
     if(stepNum === 1){
-      if(linearSearchArray[index] === target){
+      if(linearSearchArray[indexCurrent] === target){
         setFound(true);
           
         setConsoleLog((prevConsole) => [...prevConsole, <>
@@ -62,7 +62,7 @@ const LinearSearch = () => {
         setStepNum(2);
 
         setConsoleLog((prevConsole) => [...prevConsole, <>
-          <span>{target} not found at index : {index} </span><br/>
+          <span>{target} not found at index : {indexCurrent} </span><br/>
         </>]);
       }
   
@@ -70,11 +70,11 @@ const LinearSearch = () => {
     }
 
     else if(stepNum === 2){
-      if(linearSearchArray[index] != target){
-        setIndex(index + 1);
+      if(linearSearchArray[indexCurrent] != target){
+        setIndexCurrent(indexCurrent + 1);
         
         setConsoleLog((prevConsole) => [...prevConsole, <>
-          <span>New index : {index + 1} </span><br/>
+          <span>New index : {indexCurrent + 1} </span><br/>
         </>]);
 
         setStepNum(1);
@@ -86,7 +86,7 @@ const LinearSearch = () => {
 
   const resetSearch = () => {
     setStepNum(0);
-    setIndex(0);
+    setIndexCurrent(0);
     setFound(false);
     setConsoleLog([]);
   };
@@ -98,13 +98,14 @@ const LinearSearch = () => {
         <h1 className='title'>Linear Search</h1>
 
         <p className="summary">
-          A highly efficient search algorithm that works on sorted lists by repeatedly dividing the search interval in half. 
-          If the target element is less than the midpoint, search in the left half; otherwise, search in the right half. <br/>
+          A straightforward search algorithm that checks each element in a list one by one until the desired element is found or 
+          the list is fully traversed.
+        <br/>
           <br/>
           Big O notation helps quantify how algorithm efficiency scales with input size.<br/>
-          - Best: O(1) - if the target is the middle element.<br/>
-          - Average: O(log(n))<br/>
-          - Worst: O(log(n)) <br/>
+          - Best: O(1) - if the target is the first element.<br/>
+          - Average: O(n)<br/>
+          - Worst: O(n) <br/>
         </p>
 
         <div style={{display: "flex",flexDirection: "row",justifyContent: 'center',alignItems: "center",width: "100%",gap: "10px",marginTop: "5px",marginBottom: "10px",}}>
@@ -147,7 +148,15 @@ const LinearSearch = () => {
                 <div className="mapped-container" style={{color: "grey"}}>
                   {index}
                 </div>
-                <div className="mapped-container" style={{border: '2px solid grey',color: "white", }} >
+                <div className="mapped-container" 
+                  style={{border: '2px solid grey',color: "white", 
+                          backgroundColor: 
+                            found && indexCurrent == index ? 'green' : 
+                            !found && indexCurrent == index && stepNum === 1 ? 'blue':
+                            !found && indexCurrent > index ? 'red' : 
+                            'black'
+                        }} 
+                >
                   {num}
                 </div>
               </div>

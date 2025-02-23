@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../stylesheets/dataStructuresStyles.css';
-import { motion } from "framer-motion";
 
 const LinkedLists = () => {
   const [singlyLinkedList, setSinglyLinkedList] = useState(true);
