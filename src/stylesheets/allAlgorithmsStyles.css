@@ -5,7 +5,7 @@
 
 .summary{
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .bar{
@@ -35,4 +35,8 @@
   width: 100%; 
   justify-content: center;
   margin-top: 15px;
+}
+
+.code-container{
+  font-size: 14px;
 }

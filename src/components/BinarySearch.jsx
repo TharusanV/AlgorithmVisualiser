@@ -2,6 +2,29 @@ import "../stylesheets/allAlgorithmsStyles.css"
 import { useState } from "react";
 
 const BinarySearch = () => {
+
+const binaryCodeVer = <code>
+{`public static int binarySearch(int sortedArray[], int target) {
+    int startIndex = 0;
+    int endIndex = sortedArray.length - 1;
+
+    while (startIndex <= endIndex) {
+        int midIndex = (startIndex + endIndex) / 2;
+
+        if (sortedArray[midIndex] == target)
+            return midIndex;
+        else if (target > sortedArray[midIndex])
+            startIndex = midIndex + 1;
+        else
+            endIndex = midIndex - 1;
+        }
+    
+    return -1;
+}`}
+</code>
+
+
+
   const [binarySearchArray] = useState([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
   const [found, setFound] = useState(false);
   const [target, setTarget] = useState(7);
@@ -117,27 +140,16 @@ const BinarySearch = () => {
           - Worst: O(log(n)) <br/>
         </p>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-            gap: "10px",
-            marginTop: "5px",
-            marginBottom: "5px",
-          }}
-        >
+        <div style={{display: "flex",flexDirection: "row",justifyContent: 'center',alignItems: "center",width: "100%",gap: "10px",marginTop: "5px",marginBottom: "10px",}}>
           <button 
-            style={{padding: "10px",width: "30%",height: "50px",backgroundColor: singlyLinkedList ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
+            style={{padding: "10px",width: "30%",height: "40px",backgroundColor: showVisual ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
             onClick={() => {setShowVisual(true);}}
           >
             Visual
           </button>
 
           <button 
-            style={{padding: "10px",width: "30%",height: "50px",backgroundColor: singlyLinkedList ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
+            style={{padding: "10px",width: "30%",height: "40px",backgroundColor: !showVisual ? "blue" : "gray",color: "white",border: "none",cursor: "pointer",fontWeight: "bold",fontSize: "14px"}}
             onClick={() => {setShowVisual(false);}}
           >
             Code
@@ -187,24 +199,9 @@ const BinarySearch = () => {
         {!showVisual &&
         <div className="code-container">
           <div>
-            <p>
-              public static int binarySearch(int sortedArray[], int target)
-                int startIndex = 0;
-                int endIndex = sortedArray.length - 1;
-
-                while(startIndex less than or equal to endIndex)
-                  int midIndex = (startIndex + endIndex) / 2;
-
-                  if(sortedArray[midIndex] == target)
-                    return midIndex;
-                  else if(target greater than sortedArray[midIndex])
-                    startIndex = midIndex + 1;
-                  else
-                    endIndex = midIndex - 1;
-
-
-                return -1
-            </p>
+            <pre>
+              {binaryCodeVer}
+            </pre>
           </div>
         </div>}
 
