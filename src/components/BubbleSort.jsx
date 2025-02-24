@@ -7,7 +7,7 @@ const BubbleSort = () => {
   const [showVisual, setShowVisual] = useState(true);
 
   const bubbleCodeVer = <code>
-  {`public static int bubbleSort(int array[]) {
+  {`public static int bubbleSort(int[] array) {
       boolean swapped;
 
       for(int i = 0; i < array.length - 1; i++){ 

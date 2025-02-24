@@ -7,7 +7,7 @@ const SelectionSort = () => {
   const [showVisual, setShowVisual] = useState(true);
 
   const selectionCodeVer = <code>
-  {`public static int selectionSort(int array[]) {
+  {`public static int selectionSort(int[] array) {
       for(int i = 0; i < array.length - 1; i++){ 
           // Assume the current position holds the minimum element
           int min_idx = i;    
