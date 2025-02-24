@@ -1,5 +1,6 @@
 import "../stylesheets/allAlgorithmsStyles.css"
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const BubbleSort = () => {
 
@@ -27,48 +28,59 @@ const BubbleSort = () => {
 }`}
   </code>
 
-  const [bubbleSortArray, setBubbleSortArray] = useState([30, 10, 50, 20, 40]);
-
+  //Using id as the items may swap so if we were to use index instead it might cause animation issues
+  const initialArray = [
+    { value: 30, id: 0 }, 
+    { value: 10, id: 1 },
+    { value: 50, id: 2 },
+    { value: 20, id: 3 },
+    { value: 40, id: 4 },
+  ];
   
+  const [bubbleSortArray, setBubbleSortArray] = useState([...initialArray]);
   const [sorting, setSorting] = useState(false);
-
   const [isFinished, setIsFinished] = useState(false);
+  const [currentIndices, setCurrentIndices] = useState([]);
 
-  const bubbleSingleStepSearch = () => {
-    if(isFinished){return};
-
-    let arr = [...bubbleSortArray]
+  const bubbleAutoSort = async () => {
+    if (sorting || isFinished) return;
+    setSorting(true);
+    
+    let arr = [...bubbleSortArray];
     let swapped;
 
-    for(let i = 0; i < arr.length - 1; i++){
+    for (let i = 0; i < arr.length - 1; i++) {
       swapped = false;
-      for(let j = 0; j < arr.length - i - 1; j++){
-        if (arr[j] > arr[j + 1]) {
-          // Swap elements
-          let temp = arr[j];
-          arr[j] = arr[j+1];
-          arr[j+1] = temp;
-        
-          setArray([...arr]);
+      for (let j = 0; j < arr.length - i - 1; j++) {
+        //Show current items being checked then wait to show it
+        setCurrentIndices([j, j + 1]); 
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
+        if (arr[j].value > arr[j + 1].value) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; 
+          setBubbleSortArray([...arr]); 
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
           swapped = true;
         }
       }
-      if (!swapped){
+      if (!swapped) {
         setIsFinished(true);
         break;
       }
     }
+
+    setCurrentIndices([]); 
+    setSorting(false);
     setIsFinished(true);
-  }
-
-  const bubbleAutoSort = () => {
-    
   };
 
-  const resetSearch = () => {
-
+  const resetArray = () => {
+    setBubbleSortArray([...initialArray]);
+    setIsFinished(false);
+    setSorting(false);
+    setCurrentIndices([]); 
   };
-
 
 
   return (
@@ -105,17 +117,15 @@ const BubbleSort = () => {
         {showVisual &&
         <div className="visual-container">
           <div className='bar' >
-            <button style={{marginLeft: "5px", marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={bubbleAutoSort} disabled={sorting}>Play</button>
-            <button style={{marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={resetSearch}>Reset</button>
+            <button style={{marginLeft: "5px", marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={bubbleAutoSort} disabled={sorting}>{sorting ? "Sorting..." : "Start Bubble Sort"}</button>
+            <button style={{marginRight: "5px", paddingLeft: "5px", paddingRight: "5px"}} onClick={resetArray} disabled={sorting}>Reset</button>
           </div>
 
           <div className='block-container'>
-            {bubbleSortArray.map((num, index) => (
-              <div key={index} >
-                <div className="mapped-container" style={{border: '2px solid grey',color: "white", backgroundColor: 'black'}} >
-                  {num}
-                </div>
-              </div>
+            {bubbleSortArray.map((item, index) => (
+              <motion.div key={item.id} layout transition={{ type: "spring", stiffness: 150, damping: 12 }} className="mapped-container" style={{border: '2px solid grey',color: "white", backgroundColor: currentIndices.includes(index) ? "orange" : "lightblue",}} >
+                {item.value}
+              </motion.div>
             ))}
           </div>
 
@@ -137,3 +147,9 @@ const BubbleSort = () => {
 }
 
 export default BubbleSort
+
+
+
+
+
+
